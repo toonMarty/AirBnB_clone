@@ -5,7 +5,7 @@ all common attributes/methods for other classes
 """
 import uuid
 from datetime import datetime
-# from models import storage
+from models import storage
 
 
 class BaseModel:
@@ -29,15 +29,11 @@ class BaseModel:
                 if key == 'created_at' or key == 'updated_at':
                     self.__dict__[key] = datetime.isoformat(self.__dict__[key])
 
-        '''for key in kwargs:
+        for key in kwargs:
             # self.__dict__ = kwargs
             if key == 'created_at' or key == 'updated_at':
                 kwargs[key] = datetime.isoformat(kwargs[key])
-        '''
-
-        # storage.new(str(self.__dict__))
-
-        # updated at this point. Question 4
+        storage.new(str(self.__dict__))
 
     def __str__(self):
         """
@@ -55,7 +51,7 @@ class BaseModel:
         self.updated_at = datetime.now()
 
         # Update for requirement 5
-        # storage.save()
+        storage.save()
 
     def to_dict(self):
         """
