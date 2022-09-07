@@ -12,7 +12,7 @@ class BaseModel:
     """A class that defines all common attributes/methods for other classes
     """
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """
         This method initializes BaseModels instances
         """
@@ -21,7 +21,7 @@ class BaseModel:
         self.updated_at = datetime.now()
 
         # updated at this point. Question 4
-        '''if len(kwargs) != 0:  # kwargs is not empty
+        if len(kwargs) != 0:  # kwargs is not empty
             kwargs.pop('__class__')  # don't add class as an attribute
             self.__dict__ = kwargs
 
@@ -29,11 +29,12 @@ class BaseModel:
                 if key == 'created_at' or key == 'updated_at':
                     self.__dict__[key] = datetime.isoformat(self.__dict__[key])
 
-        for key in kwargs:
+        '''for key in kwargs:
             # self.__dict__ = kwargs
             if key == 'created_at' or key == 'updated_at':
                 kwargs[key] = datetime.isoformat(kwargs[key])
         '''
+
         # storage.new(str(self.__dict__))
 
         # updated at this point. Question 4
